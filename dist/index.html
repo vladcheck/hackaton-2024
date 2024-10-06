@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ideaa</title>
+        <link rel="stylesheet" href="./styles.css">
+        <script src="./script.js" defer></script>
+        <!-- загрузка происходит после ПОЛНОЙ загрузки DOM -->
+    </head>
+
+    <body>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+
+        <!-- Основной экран с кнопкой "Присоединиться" -->
+        <div class="whole-page-container" id="wholePageContainer">
+            <h1 class="title" id="title">Ideaa</h1>
+            <button class="join-button" id="joinButton">Присоединиться</button>
+        </div>
+
+        <!-- Форма входа -->
+        <div class="login-form" id="loginForm">
+            <h2>Вход</h2>
+            <form>
+                <input type="text" name="login" placeholder="Логин" required>
+                <input type="password" name="password" placeholder="Пароль" required>
+                <input type="submit" value="Войти" id="loginButton">
+                <a href="#" id="forgotPasswordBtn">Забыли пароль?</a>
+                <a href="#" id="registerBtn">Регистрация</a>
+            </form>
+        </div>
+
+        <!-- Форма регистрации -->
+        <div class="register-form" id="registerForm">
+            <h2>Регистрация</h2>
+            <form>
+                <input type="email" name="email" placeholder="Адрес эл. почты" required>
+                <input type="text" name="login" placeholder="Логин" required>
+                <input type="password" name="password" placeholder="Придумайте пароль" required>
+                <input type="password" name="confirm_password" placeholder="Подтвердите пароль"
+                    required>
+                <input type="submit" value="Зарегистрироваться" id="registerButton">
+            </form>
+        </div>
+
+        <!-- Форма восстановления пароля -->
+        <div class="forgot-password-modal" id="forgotPasswordModal">
+            <h2>Введите адрес эл. почты</h2>
+            <form id="forgotPasswordForm">
+                <input type="email" name="email" placeholder="Введите адрес эл. почты" required>
+                <input type="submit" value="Отправить письмо">
+            </form>
+        </div>
+
+        <!-- Основной контент с боковым меню и лентой -->
+        <div class="main-content" id="mainContent" style="display: none;">
+            <!-- Боковое меню -->
+            <div class="side-menu">
+                <div class="menu-item">
+                    <img src="./images/newspaper-icon.png" alt="Идеи">
+                </div>
+                <div class="menu-item">
+                    <img src="./images/folder-icon.png" alt="Задачи">
+                </div>
+            </div>
+
+            <!-- Лента постов для "Идей" -->
+            <div class="post-feed" id="ideasFeed">
+                <div class="post-item">
+                    <h2 class="post-name">Идея 1</h2>
+                    <div class="images row">
+                        <img src="./images/project-examples/1.jpeg" alt="Референс №1">
+                        <img src="./images/project-examples/2.jpg" alt="Референс №2">
+                    </div>
+                    <p class="post-description">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Eaque distinctio voluptates quae expedita architecto, commodi
+                        necessitatibus nemo molestiae reiciendis quisquam ex qui explicabo nam.
+                        Mollitia eos ducimus necessitatibus quam vero?</p>
+                    <div class="row actions">
+                        <button class="like"></button>
+                        <button class="dislike"></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-create">
+                <h2>Создай свою идею</h2>
+                <form id="idea-creation-form">
+                    <textarea name="idea-description" id="idea-description" rows="10"
+                        cols="30"></textarea>
+                    <input type="file" multiple name="idea-attachments" id="idea-attachments">
+                    <button id="create-idea-btn" type="submit">Создать</button>
+                </form>
+            </div>
+
+            <!-- Лента постов для "Задач" или "Проектов" -->
+            <div class="post-feed" id="projectsFeed" style="display: none;">
+                <!-- По умолчанию скрыта -->
+                <div class="post-item">Проект 1</div>
+                <div class="post-item">Проект 2</div>
+            </div>
+        </div>
+
+    </body>
+
+</html>

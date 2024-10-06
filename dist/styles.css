@@ -1,0 +1,369 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: Arial, sans-serif;
+    --border-radius: 15px;
+    --feed-bg: #e7e7e7a2;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    background: url('./images/registration-bg.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+/* Основной контейнер */
+.main-content {
+    display: flex;
+    gap: 3rem;
+    width: 80%;
+    height: 80vh;
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* Боковое меню */
+.side-menu {
+    min-width: 80px;
+    background-color: var(--feed-bg);
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: var(--border-radius);
+    position: sticky;
+    top: 0;
+    height: 80vh;
+    box-sizing: border-box;
+}
+
+/* Каждый элемент бокового меню */
+.menu-item {
+    margin-bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.4s ease;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Иконки в боковом меню */
+.menu-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Анимация при наведении */
+.menu-item:hover {
+    background-color: #ddd;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+    border-radius: var(--border-radius);
+}
+
+.menu-item:hover img {
+    transform: none;
+}
+
+.menu-item:hover p {
+    color: #000;
+}
+
+/* Лента постов, которая будет прокручиваться */
+
+.post-feed {
+    width: 40%;
+    border-radius: var(--border-radius);
+    overflow-y: auto;
+    margin: 0 auto;
+    height: 100%;
+    padding: 20px;
+    background-color: var(--feed-bg);
+}
+
+#projectsFeed {
+    width: 100%;
+}
+
+#ideasFeed {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.post-create {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    border-radius: var(--border-radius);
+    overflow-y: auto;
+    height: 100%;
+    padding: 20px;
+    background-color: var(--feed-bg);
+}
+
+#idea-creation-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#create-idea-btn {
+    display: block;
+    margin-top: auto;
+    width: max-content;
+}
+
+/* Стили формы входа и регистрации */
+.login-form,
+.register-form {
+    display: none;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
+    width: 300px;
+    padding: 20px;
+}
+
+.login-form input,
+.register-form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.login-form input[type="submit"],
+.register-form input[type="submit"] {
+    background: #4caf50;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.login-form input[type="submit"]:hover,
+.register-form input[type="submit"]:hover {
+    background: #45a049;
+}
+
+.login-form a,
+.register-form a {
+    display: block;
+    margin: 10px 0;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.login-form a:hover,
+.register-form a:hover {
+    text-decoration: underline;
+}
+
+/* Модальное окно для восстановления пароля */
+.forgot-password-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
+    width: 350px;
+    padding: 20px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.forgot-password-modal input[type="email"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.forgot-password-modal input[type="submit"] {
+    background: #4caf50;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: none;
+}
+
+.forgot-password-modal input[type="submit"]:hover {
+    background: #45a049;
+}
+
+/* Летающие квадраты */
+.square {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--border-radius);
+    animation: square 10s linear infinite;
+    animation-delay: calc(-1s);
+    z-index: -1;
+}
+
+@keyframes square {
+
+    0%,
+    100% {
+        transform: translateY(-20px);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+}
+
+.square:nth-child(1) {
+    width: 100px;
+    height: 100px;
+    top: 150px;
+    right: 300px;
+}
+
+.square:nth-child(2) {
+    width: 150px;
+    height: 150px;
+    top: 105px;
+    left: 350px;
+}
+
+.square:nth-child(3) {
+    width: 60px;
+    height: 60px;
+    bottom: 220px;
+    right: 345px;
+}
+
+.square:nth-child(4) {
+    width: 50px;
+    height: 50px;
+    bottom: 120px;
+    left: 95px;
+}
+
+.square:nth-child(5) {
+    width: 50px;
+    height: 50px;
+    top: 200px;
+    left: 150px;
+}
+
+.square:nth-child(6) {
+    width: 85px;
+    height: 85px;
+    top: 120px;
+    right: 150px;
+}
+
+.whole-page-container {
+    text-align: center;
+}
+
+.title {
+    font-size: 72px;
+    margin: 0;
+}
+
+.join-button {
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s ease;
+    margin-top: 20px;
+}
+
+.join-button:hover {
+    background: #e0e0e0;
+}
+
+/* СТИЛИ ПОСТОВ С ИДЕЯМИ */
+
+.post-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    color: black;
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.post-description {
+    max-width: 1000px;
+    font-size: 1.5rem;
+}
+
+.post-item button {
+    aspect-ratio: 1/1;
+    width: 2rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 1.5rem;
+}
+
+.images img {
+    height: 4rem
+}
+
+.like {
+    background-image: url("./images/heart-icon.png");
+}
+
+.dislike {
+    background-image: url("./images/broken-heart-icon.png");
+}
+
+.row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.actions {
+    justify-content: center;
+}
+
+.column.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: min-content;
+    gap: 0.2rem;
+}
